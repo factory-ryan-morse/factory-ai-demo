@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en" data-brand-guide-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Factory AI Demo · September 23</title>
+<meta name="description" content="A 30-minute live demo of Factory: Missions, agent readiness and effectiveness, and SDLC automations including code review, security review, incident response, and AutoWiki.">
+<meta property="og:title" content="Factory AI Demo">
+<meta property="og:description" content="Wednesday, September 23 · 12:00–12:30pm CST. A 30-minute live look at Missions, agent readiness and effectiveness, and SDLC automations.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="rotor-white.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --background:#000000;
+    --surface:#151311;
+    --surface-2:#1D1A18;
+    --border:#38322F;
+    --border-soft:#26211F;
+    --body:#998F89;
+    --meta:#80756F;
+    --text:#FFFFFF;
+    --accent:#FF5A00;
+    --font:"Geist","Helvetica Neue",Arial,sans-serif;
+    --mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+
+  html{-webkit-text-size-adjust:100%}
+
+  body{
+    margin:0;
+    background:var(--background);
+    color:var(--body);
+    font-family:var(--font);
+    font-weight:400;
+    font-size:18px;
+    line-height:1.6;
+    letter-spacing:-0.01em;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px}
+
+  /* ---------- header ---------- */
+  header{
+    border-bottom:1px solid var(--border-soft);
+    position:sticky;
+    top:0;
+    background:rgba(0,0,0,0.88);
+    backdrop-filter:blur(12px);
+    z-index:10;
+  }
+  .header-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+    padding:20px 0;
+  }
+  .logo{display:block;width:132px;height:auto}
+  .header-cta{
+    font-family:var(--mono);
+    font-size:13px;
+    letter-spacing:-0.01em;
+    color:var(--accent);
+    text-decoration:none;
+    border:1px solid var(--border);
+    border-radius:2px;
+    padding:9px 16px;
+    white-space:nowrap;
+    transition:border-color .15s ease,background .15s ease;
+  }
+  .header-cta:hover{border-color:var(--accent);background:rgba(255,90,0,.07)}
+
+  /* ---------- hero ---------- */
+  .hero{padding:96px 0 80px;border-bottom:1px solid var(--border-soft)}
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--meta);
+    margin:0 0 28px;
+  }
+  h1{
+    font-family:var(--font);
+    font-weight:400;
+    font-size:clamp(44px,7vw,72px);
+    line-height:1.04;
+    letter-spacing:-0.025em;
+    color:var(--text);
+    margin:0 0 28px;
+    text-wrap:balance;
+  }
+  .lede{
+    font-size:20px;
+    line-height:1.55;
+    max-width:44ch;
+    margin:0 0 40px;
+    text-wrap:pretty;
+  }
+
+  /* ---------- event facts ---------- */
+  .facts{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0;
+    border:1px solid var(--border);
+    border-radius:3px;
+    overflow:hidden;
+    margin:0 0 40px;
+    max-width:640px;
+  }
+  .fact{
+    flex:1 1 33.333%;
+    min-width:150px;
+    padding:20px 22px;
+    border-right:1px solid var(--border);
+    background:var(--surface);
+  }
+  .fact:last-child{border-right:0}
+  .fact-label{
+    font-family:var(--mono);
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--meta);
+    margin:0 0 8px;
+  }
+  .fact-value{
+    font-size:17px;
+    color:var(--text);
+    margin:0;
+    line-height:1.35;
+  }
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:var(--accent);
+    color:#000;
+    font-family:var(--font);
+    font-weight:500;
+    font-size:17px;
+    letter-spacing:-0.01em;
+    text-decoration:none;
+    padding:15px 28px;
+    border-radius:3px;
+    transition:filter .15s ease,transform .15s ease;
+  }
+  .btn:hover{filter:brightness(1.1)}
+  .btn:active{transform:translateY(1px)}
+  .btn-note{
+    font-family:var(--mono);
+    font-size:13px;
+    color:var(--meta);
+    margin:16px 0 0;
+  }
+
+  /* ---------- sections ---------- */
+  section{padding:80px 0;border-bottom:1px solid var(--border-soft)}
+  .section-label{
+    font-family:var(--mono);
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--meta);
+    margin:0 0 20px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .section-label::before{
+    content:"";
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:var(--accent);
+    flex:none;
+  }
+  h2{
+    font-family:var(--font);
+    font-weight:400;
+    font-size:clamp(28px,4vw,38px);
+    line-height:1.15;
+    letter-spacing:-0.02em;
+    color:var(--text);
+    margin:0 0 24px;
+    text-wrap:balance;
+  }
+  .prose{max-width:62ch;font-size:19px;line-height:1.65;text-wrap:pretty}
+  .prose p{margin:0 0 18px}
+  .prose p:last-child{margin-bottom:0}
+  .prose strong{color:var(--text);font-weight:500}
+
+  /* ---------- agenda ---------- */
+  .group{margin-top:52px}
+  .group-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    padding-bottom:14px;
+    border-bottom:1px solid var(--border);
+    margin-bottom:0;
+  }
+  .group-num{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--meta);
+    letter-spacing:0.06em;
+  }
+  .group-title{
+    font-size:22px;
+    font-weight:500;
+    color:var(--text);
+    letter-spacing:-0.02em;
+    margin:0;
+  }
+  .group-note{
+    font-size:16px;
+    color:var(--meta);
+    margin:14px 0 0;
+    max-width:60ch;
+    text-wrap:pretty;
+  }
+
+  .items{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:1px;
+    background:var(--border-soft);
+    border:1px solid var(--border-soft);
+    border-top:0;
+    margin-top:24px;
+  }
+  .items--2{grid-template-columns:repeat(2,1fr)}
+  .item{
+    background:var(--surface);
+    padding:24px 24px 26px;
+  }
+  .item h3{
+    font-family:var(--font);
+    font-size:17px;
+    font-weight:500;
+    letter-spacing:-0.015em;
+    color:var(--text);
+    margin:0 0 10px;
+  }
+  .item p{
+    margin:0;
+    font-size:16px;
+    line-height:1.55;
+    text-wrap:pretty;
+  }
+
+  /* ---------- audience list ---------- */
+  ul.dots{list-style:none;padding:0;margin:24px 0 0;max-width:60ch}
+  ul.dots li{
+    position:relative;
+    padding-left:22px;
+    margin-bottom:12px;
+    font-size:17px;
+    text-wrap:pretty;
+  }
+  ul.dots li::before{
+    content:"";
+    position:absolute;
+    left:2px;
+    top:0.62em;
+    width:0.3em;
+    height:0.3em;
+    border-radius:50%;
+    background:var(--meta);
+  }
+  ul.dots li:last-child{margin-bottom:0}
+
+  /* ---------- closing cta ---------- */
+  .close{
+    padding:88px 0 96px;
+    border-bottom:0;
+    text-align:center;
+  }
+  .close h2{margin-bottom:16px}
+  .close .prose{margin:0 auto 36px;text-align:center}
+
+  /* ---------- footer ---------- */
+  footer{
+    border-top:1px solid var(--border-soft);
+    padding:36px 0 56px;
+  }
+  .footer-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+  .footer-logo{width:96px;height:auto;opacity:.72}
+  .footer-meta{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--meta);
+    margin:0;
+  }
+  footer a{color:var(--accent);text-decoration:none}
+  footer a:hover{text-decoration:underline}
+
+  @media (max-width:720px){
+    .wrap{padding:0 22px}
+    .hero{padding:64px 0 56px}
+    section{padding:60px 0}
+    body{font-size:17px}
+    .fact{flex:1 1 100%;border-right:0;border-bottom:1px solid var(--border)}
+    .fact:last-child{border-bottom:0}
+    .header-cta{display:none}
+    .items--2{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-inner">
+    <img class="logo" src="factory-lockup-white.svg" alt="Factory">
+    <a class="header-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSdHq7hYISY5QE2KslFO6a-uVSJbBu8kELKCIXn08nBWJqFJzA/viewform">Register →</a>
+  </div>
+</header>
+
+<main>
+
+  <div class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Live demo · 30 minutes</p>
+      <h1>Factory AI Demo</h1>
+      <p class="lede">A working look at how engineering teams delegate real software work to agents, from a single task to a full delivery lifecycle.</p>
+
+      <div class="facts">
+        <div class="fact">
+          <p class="fact-label">Date</p>
+          <p class="fact-value">Wednesday<br>September 23</p>
+        </div>
+        <div class="fact">
+          <p class="fact-label">Time</p>
+          <p class="fact-value">12:00–12:30pm<br>CST</p>
+        </div>
+        <div class="fact">
+          <p class="fact-label">Format</p>
+          <p class="fact-value">Live demo<br>with Q&amp;A</p>
+        </div>
+      </div>
+
+      <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdHq7hYISY5QE2KslFO6a-uVSJbBu8kELKCIXn08nBWJqFJzA/viewform">Register for the demo</a>
+      <p class="btn-note">Takes under a minute. We will send the calendar invite and joining link.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <p class="section-label">About Factory</p>
+      <h2>Who we are</h2>
+      <div class="prose">
+        <p>Factory builds software development agents called <strong>Droids</strong>. They run in the places your team already works, including the IDE, the terminal, CI/CD, and Slack, and they take on complete engineering tasks rather than autocompleting lines of code.</p>
+        <p>The result is autonomy across the software delivery lifecycle: engineers define intent, Droids handle execution. Factory is model-agnostic, tool-agnostic, and built for enterprise use with SOC 2, GDPR, and ISO 42001 coverage.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="section-label">Agenda</p>
+      <h2>What we will cover</h2>
+      <div class="prose">
+        <p>Three parts, each demonstrated live in a real repository rather than on slides.</p>
+      </div>
+
+      <div class="group">
+        <div class="group-head">
+          <span class="group-num">01</span>
+          <h3 class="group-title">Orchestration</h3>
+        </div>
+        <p class="group-note">How a large, multi-feature project gets planned, scoped, and executed by a coordinated team of agents.</p>
+        <div class="items">
+          <div class="item">
+            <h3>Missions</h3>
+            <p>Describe a large project in plain language, collaborate on the plan, then let Droid break it into milestones and run parallel workers until it ships.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="group-head">
+          <span class="group-num">02</span>
+          <h3 class="group-title">Measurement</h3>
+        </div>
+        <p class="group-note">The two surfaces that tell you whether your codebase is ready for agents, and what you get back once it is.</p>
+        <div class="items items--2">
+          <div class="item">
+            <h3>Agent readiness</h3>
+            <p>A scored assessment of how well your codebase supports autonomous development across eight pillars and five maturity levels, with a report on what to fix first.</p>
+          </div>
+          <div class="item">
+            <h3>Agent effectiveness</h3>
+            <p>Connects agent spend to the work it actually produced, so you can see how much faster your organization ships and where the return is coming from.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="group-head">
+          <span class="group-num">03</span>
+          <h3 class="group-title">SDLC automations</h3>
+        </div>
+        <p class="group-note">Standing automations that run on your repositories without anyone opening a session.</p>
+        <div class="items items--2">
+          <div class="item">
+            <h3>Code review</h3>
+            <p>Every pull request gets reviewed automatically in CI, with comments on real correctness and design problems instead of style nits.</p>
+          </div>
+          <div class="item">
+            <h3>Security review</h3>
+            <p>Security-focused reviews of pull requests and full-codebase audits, using STRIDE, OWASP, and supply-chain methodology.</p>
+          </div>
+          <div class="item">
+            <h3>Incident response</h3>
+            <p>Production alerts land in Slack, and Droid investigates root cause, then either resolves the incident or hands your on-call a written diagnosis.</p>
+          </div>
+          <div class="item">
+            <h3>AutoWiki</h3>
+            <p>Generates a structured, searchable wiki for any repository and refreshes it automatically on every push to the default branch.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="section-label">Audience</p>
+      <h2>Who should attend</h2>
+      <ul class="dots">
+        <li>Engineering leaders evaluating where agents fit in their delivery lifecycle</li>
+        <li>Platform and developer experience teams responsible for CI/CD and tooling</li>
+        <li>Security and compliance owners who need review and audit coverage at scale</li>
+        <li>Engineers who want to see what a Droid actually does on a real codebase</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="close">
+    <div class="wrap">
+      <p class="section-label" style="justify-content:center">Register</p>
+      <h2>Save your spot</h2>
+      <div class="prose">
+        <p>Wednesday, September 23, 12:00 to 12:30pm CST. Tell us what you want to see and we will weight the demo toward it.</p>
+      </div>
+      <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdHq7hYISY5QE2KslFO6a-uVSJbBu8kELKCIXn08nBWJqFJzA/viewform">Register for the demo</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <img class="footer-logo" src="factory-lockup-white.svg" alt="Factory">
+    <p class="footer-meta">Questions? <a href="mailto:ryan.morse@factory.ai">ryan.morse@factory.ai</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
