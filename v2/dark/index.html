@@ -158,7 +158,7 @@
   .prose p{margin:0}
   .prose strong{color:var(--text);font-weight:500}
 
-  /* ---------- agenda: flat definition list ---------- */
+  /* ---------- flat definition list ---------- */
   .specs{margin:26px 0 0}
   .row{
     display:grid;
@@ -176,6 +176,20 @@
     letter-spacing:-0.015em;
     margin:0;
   }
+  /* The term doubles as the link to its documentation. It keeps the text
+     colour so the list does not read as a wall of links; the arrow carries
+     the affordance and the underline appears on hover. */
+  .term a{color:var(--text);text-decoration:none}
+  .term a:hover{text-decoration:underline;text-underline-offset:3px}
+  .ext{
+    font-family:var(--mono);
+    font-weight:400;
+    font-size:12px;
+    color:var(--meta);
+    margin-left:6px;
+    vertical-align:1px;
+  }
+  .term a:hover .ext{color:var(--text)}
   .tag{
     display:block;
     font-family:var(--mono);
@@ -240,9 +254,28 @@
 
   <section>
     <div class="wrap">
-      <h2>Who we are</h2>
+      <h2>The autonomy stack for enterprise teams</h2>
       <div class="prose">
-        <p>Factory builds software development agents called <strong>Droids</strong> that run where your team already works, from the IDE and terminal to CI/CD and Slack, and take on complete engineering tasks rather than autocompleting lines. Engineers define intent, Droids handle execution across the delivery lifecycle. We are model-agnostic, tool-agnostic, and built for enterprise use with SOC 2, GDPR, and ISO 42001 coverage.</p>
+        <p>Factory builds <strong>Droids</strong>, software engineering agents that take on complete tasks rather than autocompleting lines. Engineers set the intent and review the result. Droids do the work in between.</p>
+      </div>
+
+      <div class="specs">
+        <div class="row">
+          <p class="term"><a href="https://factory.ai" aria-label="One platform, every surface">One platform<span class="ext" aria-hidden="true">↗</span></a><span class="tag">Every surface</span></p>
+          <p class="def">Droids ship from the desktop app, the CLI, Slack and Teams, mobile, Linear and Jira, and GitHub, so the work happens on the surfaces your team already uses.</p>
+        </div>
+        <div class="row">
+          <p class="term"><a href="https://factory.ai/enterprise" aria-label="Your software factory, on the Factory enterprise page">Your software factory<span class="ext" aria-hidden="true">↗</span></a><span class="tag">Underneath</span></p>
+          <p class="def">The compute Droids run on, the routing that picks their models, the automations that dispatch them, and the analytics that show what actually landed.</p>
+        </div>
+        <div class="row">
+          <p class="term"><a href="https://factory.ai/product/router" aria-label="Model routing, no lock-in">No lock-in<span class="ext" aria-hidden="true">↗</span></a><span class="tag">Models and tools</span></p>
+          <p class="def">Move freely between open and closed models, run several in parallel, or bring your own endpoint or weights. Droids plug into the code host, tracker, chat, cloud, and CI you already run.</p>
+        </div>
+        <div class="row">
+          <p class="term"><a href="https://factory.ai/security" aria-label="Enterprise security and compliance">Enterprise from day one<span class="ext" aria-hidden="true">↗</span></a><span class="tag">Security</span></p>
+          <p class="def">SOC 2, GDPR, ISO 42001, and CCPA, with fully air-gapped deployment, SAML and IdP integration, centralized org configuration, and cost controls.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -251,36 +284,36 @@
     <div class="wrap">
       <h2>What we will cover</h2>
       <div class="prose">
-        <p>Seven capabilities, each shown live in a real repository rather than on slides.</p>
+        <p>Seven capabilities, each shown live in a real repository rather than on slides. Every one links to its documentation if you want to read ahead.</p>
       </div>
 
       <div class="specs">
         <div class="row">
-          <p class="term">Missions<span class="tag">Orchestration</span></p>
+          <p class="term"><a href="https://docs.factory.ai/missions/overview" aria-label="Missions documentation">Missions<span class="ext" aria-hidden="true">↗</span></a><span class="tag">Orchestration</span></p>
           <p class="def">Describe a large project in plain language, collaborate on the plan, then let Droid break it into milestones and run parallel workers until it ships.</p>
         </div>
         <div class="row">
-          <p class="term">Agent readiness<span class="tag">Measurement</span></p>
+          <p class="term"><a href="https://docs.factory.ai/agent-readiness/overview" aria-label="Agent readiness documentation">Agent readiness<span class="ext" aria-hidden="true">↗</span></a><span class="tag">Measurement</span></p>
           <p class="def">A scored assessment of how well your codebase supports autonomous development across eight pillars and five maturity levels, with a report on what to fix first.</p>
         </div>
         <div class="row">
-          <p class="term">Agent effectiveness<span class="tag">Measurement</span></p>
+          <p class="term"><a href="https://docs.factory.ai/agent-effectiveness/overview" aria-label="Agent effectiveness documentation">Agent effectiveness<span class="ext" aria-hidden="true">↗</span></a><span class="tag">Measurement</span></p>
           <p class="def">Connects agent spend to the work it actually produced, so you can see how much faster your organization ships and where the return is coming from.</p>
         </div>
         <div class="row">
-          <p class="term">Code review<span class="tag">SDLC automation</span></p>
+          <p class="term"><a href="https://docs.factory.ai/software-factory/code-review-ci" aria-label="Automated code review documentation">Code review<span class="ext" aria-hidden="true">↗</span></a><span class="tag">SDLC automation</span></p>
           <p class="def">Every pull request gets reviewed automatically in CI, with comments on real correctness and design problems instead of style nits.</p>
         </div>
         <div class="row">
-          <p class="term">Security review<span class="tag">SDLC automation</span></p>
+          <p class="term"><a href="https://docs.factory.ai/software-factory/security-review" aria-label="Security review documentation">Security review<span class="ext" aria-hidden="true">↗</span></a><span class="tag">SDLC automation</span></p>
           <p class="def">Security-focused reviews of pull requests and full-codebase audits, using STRIDE, OWASP, and supply-chain methodology.</p>
         </div>
         <div class="row">
-          <p class="term">Incident response<span class="tag">SDLC automation</span></p>
+          <p class="term"><a href="https://docs.factory.ai/software-factory/incident-response" aria-label="Incident response documentation">Incident response<span class="ext" aria-hidden="true">↗</span></a><span class="tag">SDLC automation</span></p>
           <p class="def">Production alerts land in Slack, and Droid investigates root cause, then either resolves the incident or hands your on-call a written diagnosis.</p>
         </div>
         <div class="row">
-          <p class="term">AutoWiki<span class="tag">SDLC automation</span></p>
+          <p class="term"><a href="https://docs.factory.ai/software-factory/wiki/overview" aria-label="AutoWiki documentation">AutoWiki<span class="ext" aria-hidden="true">↗</span></a><span class="tag">SDLC automation</span></p>
           <p class="def">Generates a structured, searchable wiki for any repository and refreshes it automatically on every push to the default branch.</p>
         </div>
       </div>
@@ -303,7 +336,7 @@
   <div class="wrap footer-inner">
     <img class="footer-logo logo-dark" src="../../factory-lockup-white.svg" alt="Factory">
     <img class="footer-logo logo-light" src="../../factory-lockup-black.svg" alt="Factory">
-    <p>Questions? <a href="mailto:ryan.morse@factory.ai">ryan.morse@factory.ai</a></p>
+    <p><a href="https://docs.factory.ai">docs.factory.ai</a> · Questions? <a href="mailto:ryan.morse@factory.ai">ryan.morse@factory.ai</a></p>
   </div>
 </footer>
 

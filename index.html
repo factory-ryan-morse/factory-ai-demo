@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-brand-guide-theme="dark">
+<html lang="en" data-brand-guide-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,27 +8,48 @@
 <meta property="og:title" content="Factory AI Demo">
 <meta property="og:description" content="Wednesday, September 23 · 12:00–12:30pm CST. A 30-minute live look at Missions, agent readiness and effectiveness, and SDLC automations.">
 <meta property="og:type" content="website">
-<link rel="icon" type="image/svg+xml" href="rotor-white.svg">
+<link rel="icon" type="image/svg+xml" href="./rotor-white.svg" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="./rotor-black.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
-  :root{
+  /* Factory brand tokens. Both themes are defined so the only difference
+     between the dark and light builds is the data-brand-guide-theme value. */
+  [data-brand-guide-theme="dark"]{
     --background:#000000;
     --surface:#151311;
-    --surface-2:#1D1A18;
     --border:#38322F;
-    --border-soft:#26211F;
+    --rule:#26211F;
     --body:#998F89;
     --meta:#80756F;
     --text:#FFFFFF;
+    /* Orange text clears AA on black (6.7:1), so links can carry the accent. */
+    --link:#FF5A00;
+    --link-decoration:none;
+  }
+  [data-brand-guide-theme="light"]{
+    --background:#F4F1EF;
+    --surface:#FFFFFF;
+    --border:#D2CCC7;
+    --rule:#E9E4E1;
+    --body:#564E4A;
+    --meta:#6B615C;
+    --text:#151311;
+    /* Orange text on the light background is only 2.8:1, so on this theme the
+       accent is a fill (the button) and link text uses the text token. */
+    --link:#151311;
+    --link-decoration:underline;
+  }
+  :root{
     --accent:#FF5A00;
+    /* Black on orange is 6.7:1; white on orange is only 3.1:1. */
+    --on-accent:#000000;
     --font:"Geist","Helvetica Neue",Arial,sans-serif;
     --mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
   }
 
   *,*::before,*::after{box-sizing:border-box}
-
   html{-webkit-text-size-adjust:100%}
 
   body{
@@ -36,290 +57,178 @@
     background:var(--background);
     color:var(--body);
     font-family:var(--font);
-    font-weight:400;
-    font-size:18px;
+    font-size:17px;
     line-height:1.6;
     letter-spacing:-0.01em;
     -webkit-font-smoothing:antialiased;
   }
 
-  .wrap{max-width:1080px;margin:0 auto;padding:0 32px}
+  .wrap{max-width:920px;margin:0 auto;padding:0 28px}
+
+  a{color:var(--link);text-decoration:var(--link-decoration);text-underline-offset:2px}
+
+  /* theme-conditional logo swap */
+  [data-brand-guide-theme="dark"] .logo-light{display:none}
+  [data-brand-guide-theme="light"] .logo-dark{display:none}
 
   /* ---------- header ---------- */
   header{
-    border-bottom:1px solid var(--border-soft);
+    border-bottom:1px solid var(--rule);
     position:sticky;
     top:0;
-    background:rgba(0,0,0,0.88);
-    backdrop-filter:blur(12px);
+    background:var(--background);
     z-index:10;
   }
   .header-inner{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap:24px;
-    padding:20px 0;
+    gap:20px;
+    padding:16px 0;
   }
-  .logo{display:block;width:132px;height:auto}
+  .logo{display:block;width:112px;height:auto}
   .header-cta{
     font-family:var(--mono);
     font-size:13px;
-    letter-spacing:-0.01em;
-    color:var(--accent);
-    text-decoration:none;
-    border:1px solid var(--border);
-    border-radius:2px;
-    padding:9px 16px;
+    color:var(--link);
+    text-decoration:var(--link-decoration);
+    text-underline-offset:2px;
     white-space:nowrap;
-    transition:border-color .15s ease,background .15s ease;
   }
-  .header-cta:hover{border-color:var(--accent);background:rgba(255,90,0,.07)}
+  .header-cta:hover{text-decoration:underline}
 
   /* ---------- hero ---------- */
-  .hero{padding:96px 0 80px;border-bottom:1px solid var(--border-soft)}
-  .eyebrow{
-    font-family:var(--mono);
-    font-size:13px;
-    text-transform:uppercase;
-    letter-spacing:0.08em;
-    color:var(--meta);
-    margin:0 0 28px;
-  }
+  .hero{padding:72px 0 56px}
   h1{
-    font-family:var(--font);
     font-weight:400;
-    font-size:clamp(44px,7vw,72px);
-    line-height:1.04;
+    font-size:clamp(40px,6.4vw,60px);
+    line-height:1.05;
     letter-spacing:-0.025em;
     color:var(--text);
-    margin:0 0 28px;
+    margin:0 0 20px;
     text-wrap:balance;
+  }
+  .meta{
+    font-family:var(--mono);
+    font-size:14px;
+    color:var(--meta);
+    margin:0 0 22px;
   }
   .lede{
     font-size:20px;
-    line-height:1.55;
-    max-width:44ch;
-    margin:0 0 40px;
+    line-height:1.5;
+    max-width:46ch;
+    margin:0 0 32px;
     text-wrap:pretty;
   }
 
-  /* ---------- event facts ---------- */
-  .facts{
-    display:flex;
-    flex-wrap:wrap;
-    gap:0;
-    border:1px solid var(--border);
-    border-radius:3px;
-    overflow:hidden;
-    margin:0 0 40px;
-    max-width:640px;
-  }
-  .fact{
-    flex:1 1 33.333%;
-    min-width:150px;
-    padding:20px 22px;
-    border-right:1px solid var(--border);
-    background:var(--surface);
-  }
-  .fact:last-child{border-right:0}
-  .fact-label{
-    font-family:var(--mono);
-    font-size:11px;
-    text-transform:uppercase;
-    letter-spacing:0.1em;
-    color:var(--meta);
-    margin:0 0 8px;
-  }
-  .fact-value{
-    font-size:17px;
-    color:var(--text);
-    margin:0;
-    line-height:1.35;
-  }
-
-  /* ---------- buttons ---------- */
+  /* ---------- button ---------- */
   .btn{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
+    display:inline-block;
     background:var(--accent);
-    color:#000;
-    font-family:var(--font);
+    color:var(--on-accent);
     font-weight:500;
-    font-size:17px;
+    font-size:16px;
     letter-spacing:-0.01em;
     text-decoration:none;
-    padding:15px 28px;
+    padding:13px 24px;
     border-radius:3px;
-    transition:filter .15s ease,transform .15s ease;
+    transition:filter .15s ease;
   }
-  .btn:hover{filter:brightness(1.1)}
-  .btn:active{transform:translateY(1px)}
+  .btn:hover{filter:brightness(1.08)}
   .btn-note{
     font-family:var(--mono);
     font-size:13px;
     color:var(--meta);
-    margin:16px 0 0;
+    margin:14px 0 0;
   }
 
   /* ---------- sections ---------- */
-  section{padding:80px 0;border-bottom:1px solid var(--border-soft)}
-  .section-label{
-    font-family:var(--mono);
-    font-size:12px;
-    text-transform:uppercase;
-    letter-spacing:0.1em;
-    color:var(--meta);
-    margin:0 0 20px;
-    display:flex;
-    align-items:center;
-    gap:10px;
-  }
-  .section-label::before{
-    content:"";
-    width:5px;
-    height:5px;
-    border-radius:50%;
-    background:var(--accent);
-    flex:none;
-  }
+  section{padding:48px 0;border-top:1px solid var(--rule)}
   h2{
-    font-family:var(--font);
     font-weight:400;
-    font-size:clamp(28px,4vw,38px);
-    line-height:1.15;
+    font-size:26px;
+    line-height:1.2;
     letter-spacing:-0.02em;
     color:var(--text);
-    margin:0 0 24px;
+    margin:0 0 18px;
     text-wrap:balance;
   }
-  .prose{max-width:62ch;font-size:19px;line-height:1.65;text-wrap:pretty}
-  .prose p{margin:0 0 18px}
-  .prose p:last-child{margin-bottom:0}
+  .prose{max-width:64ch;text-wrap:pretty}
+  .prose p{margin:0}
   .prose strong{color:var(--text);font-weight:500}
 
-  /* ---------- agenda ---------- */
-  .group{margin-top:52px}
-  .group-head{
-    display:flex;
-    align-items:baseline;
-    gap:14px;
-    padding-bottom:14px;
-    border-bottom:1px solid var(--border);
-    margin-bottom:0;
+  /* ---------- flat definition list ---------- */
+  .specs{margin:26px 0 0}
+  .row{
+    display:grid;
+    grid-template-columns:210px 1fr;
+    gap:4px 36px;
+    padding:18px 0;
+    border-top:1px solid var(--rule);
+    align-items:start;
   }
-  .group-num{
+  .row:last-child{border-bottom:1px solid var(--rule)}
+  .term{
+    font-size:17px;
+    font-weight:500;
+    color:var(--text);
+    letter-spacing:-0.015em;
+    margin:0;
+  }
+  /* The term doubles as the link to its documentation. It keeps the text
+     colour so the list does not read as a wall of links; the arrow carries
+     the affordance and the underline appears on hover. */
+  .term a{color:var(--text);text-decoration:none}
+  .term a:hover{text-decoration:underline;text-underline-offset:3px}
+  .ext{
     font-family:var(--mono);
+    font-weight:400;
     font-size:12px;
     color:var(--meta);
-    letter-spacing:0.06em;
+    margin-left:6px;
+    vertical-align:1px;
   }
-  .group-title{
-    font-size:22px;
-    font-weight:500;
-    color:var(--text);
-    letter-spacing:-0.02em;
-    margin:0;
-  }
-  .group-note{
-    font-size:16px;
+  .term a:hover .ext{color:var(--text)}
+  .tag{
+    display:block;
+    font-family:var(--mono);
+    font-weight:400;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.09em;
     color:var(--meta);
-    margin:14px 0 0;
-    max-width:60ch;
-    text-wrap:pretty;
+    margin-top:5px;
   }
+  .def{margin:0;font-size:16px;line-height:1.55;text-wrap:pretty}
 
-  .items{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:1px;
-    background:var(--border-soft);
-    border:1px solid var(--border-soft);
-    border-top:0;
-    margin-top:24px;
-  }
-  .items--2{grid-template-columns:repeat(2,1fr)}
-  .item{
-    background:var(--surface);
-    padding:24px 24px 26px;
-  }
-  .item h3{
-    font-family:var(--font);
-    font-size:17px;
-    font-weight:500;
-    letter-spacing:-0.015em;
-    color:var(--text);
-    margin:0 0 10px;
-  }
-  .item p{
-    margin:0;
-    font-size:16px;
-    line-height:1.55;
-    text-wrap:pretty;
-  }
-
-  /* ---------- audience list ---------- */
-  ul.dots{list-style:none;padding:0;margin:24px 0 0;max-width:60ch}
-  ul.dots li{
-    position:relative;
-    padding-left:22px;
-    margin-bottom:12px;
-    font-size:17px;
-    text-wrap:pretty;
-  }
-  ul.dots li::before{
-    content:"";
-    position:absolute;
-    left:2px;
-    top:0.62em;
-    width:0.3em;
-    height:0.3em;
-    border-radius:50%;
-    background:var(--meta);
-  }
-  ul.dots li:last-child{margin-bottom:0}
-
-  /* ---------- closing cta ---------- */
-  .close{
-    padding:88px 0 96px;
-    border-bottom:0;
-    text-align:center;
-  }
-  .close h2{margin-bottom:16px}
-  .close .prose{margin:0 auto 36px;text-align:center}
+  /* ---------- close ---------- */
+  .close{padding:56px 0 64px}
+  .close h2{margin-bottom:14px}
+  .close .prose{margin-bottom:26px}
 
   /* ---------- footer ---------- */
-  footer{
-    border-top:1px solid var(--border-soft);
-    padding:36px 0 56px;
-  }
+  footer{border-top:1px solid var(--rule);padding:22px 0 40px}
   .footer-inner{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap:20px;
+    gap:16px;
     flex-wrap:wrap;
-  }
-  .footer-logo{width:96px;height:auto;opacity:.72}
-  .footer-meta{
     font-family:var(--mono);
     font-size:12px;
     color:var(--meta);
-    margin:0;
   }
-  footer a{color:var(--accent);text-decoration:none}
-  footer a:hover{text-decoration:underline}
+  .footer-inner p{margin:0}
+  .footer-logo{width:84px;height:auto;opacity:.7}
 
-  @media (max-width:720px){
-    .wrap{padding:0 22px}
-    .hero{padding:64px 0 56px}
-    section{padding:60px 0}
-    body{font-size:17px}
-    .fact{flex:1 1 100%;border-right:0;border-bottom:1px solid var(--border)}
-    .fact:last-child{border-bottom:0}
+  @media (max-width:700px){
+    .wrap{padding:0 20px}
+    .hero{padding:52px 0 44px}
+    section{padding:40px 0}
+    .row{grid-template-columns:1fr;gap:6px;padding:16px 0}
+    .tag{display:inline-block;margin:0 0 0 8px}
     .header-cta{display:none}
-    .items--2{grid-template-columns:1fr}
   }
 </style>
 </head>
@@ -327,137 +236,95 @@
 
 <header>
   <div class="wrap header-inner">
-    <img class="logo" src="factory-lockup-white.svg" alt="Factory">
+    <img class="logo logo-dark" src="./factory-lockup-white.svg" alt="Factory">
+    <img class="logo logo-light" src="./factory-lockup-black.svg" alt="Factory">
     <a class="header-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSdHq7hYISY5QE2KslFO6a-uVSJbBu8kELKCIXn08nBWJqFJzA/viewform">Register →</a>
   </div>
 </header>
 
 <main>
 
-  <div class="hero">
-    <div class="wrap">
-      <p class="eyebrow">Live demo · 30 minutes</p>
-      <h1>Factory AI Demo</h1>
-      <p class="lede">A working look at how engineering teams delegate real software work to agents, from a single task to a full delivery lifecycle.</p>
-
-      <div class="facts">
-        <div class="fact">
-          <p class="fact-label">Date</p>
-          <p class="fact-value">Wednesday<br>September 23</p>
-        </div>
-        <div class="fact">
-          <p class="fact-label">Time</p>
-          <p class="fact-value">12:00–12:30pm<br>CST</p>
-        </div>
-        <div class="fact">
-          <p class="fact-label">Format</p>
-          <p class="fact-value">Live demo<br>with Q&amp;A</p>
-        </div>
-      </div>
-
-      <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdHq7hYISY5QE2KslFO6a-uVSJbBu8kELKCIXn08nBWJqFJzA/viewform">Register for the demo</a>
-      <p class="btn-note">Takes under a minute. We will send the calendar invite and joining link.</p>
-    </div>
+  <div class="wrap hero">
+    <h1>Factory AI Demo</h1>
+    <p class="meta">Wednesday, September 23 · 12:00–12:30pm CST · live, with Q&amp;A</p>
+    <p class="lede">A working look at how engineering teams delegate real software work to agents, from a single task to a full delivery lifecycle.</p>
+    <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdHq7hYISY5QE2KslFO6a-uVSJbBu8kELKCIXn08nBWJqFJzA/viewform">Register for the demo</a>
+    <p class="btn-note">Under a minute. We will send the calendar invite and joining link.</p>
   </div>
 
   <section>
     <div class="wrap">
-      <p class="section-label">About Factory</p>
-      <h2>Who we are</h2>
+      <h2>The autonomy stack for enterprise teams</h2>
       <div class="prose">
-        <p>Factory builds software development agents called <strong>Droids</strong>. They run in the places your team already works, including the IDE, the terminal, CI/CD, and Slack, and they take on complete engineering tasks rather than autocompleting lines of code.</p>
-        <p>The result is autonomy across the software delivery lifecycle: engineers define intent, Droids handle execution. Factory is model-agnostic, tool-agnostic, and built for enterprise use with SOC 2, GDPR, and ISO 42001 coverage.</p>
+        <p>Factory builds <strong>Droids</strong>, software engineering agents that take on complete tasks rather than autocompleting lines. Engineers set the intent and review the result. Droids do the work in between.</p>
+      </div>
+
+      <div class="specs">
+        <div class="row">
+          <p class="term"><a href="https://factory.ai" aria-label="One platform, every surface">One platform<span class="ext" aria-hidden="true">↗</span></a><span class="tag">Every surface</span></p>
+          <p class="def">Droids ship from the desktop app, the CLI, Slack and Teams, mobile, Linear and Jira, and GitHub, so the work happens on the surfaces your team already uses.</p>
+        </div>
+        <div class="row">
+          <p class="term"><a href="https://factory.ai/enterprise" aria-label="Your software factory, on the Factory enterprise page">Your software factory<span class="ext" aria-hidden="true">↗</span></a><span class="tag">Underneath</span></p>
+          <p class="def">The compute Droids run on, the routing that picks their models, the automations that dispatch them, and the analytics that show what actually landed.</p>
+        </div>
+        <div class="row">
+          <p class="term"><a href="https://factory.ai/product/router" aria-label="Model routing, no lock-in">No lock-in<span class="ext" aria-hidden="true">↗</span></a><span class="tag">Models and tools</span></p>
+          <p class="def">Move freely between open and closed models, run several in parallel, or bring your own endpoint or weights. Droids plug into the code host, tracker, chat, cloud, and CI you already run.</p>
+        </div>
+        <div class="row">
+          <p class="term"><a href="https://factory.ai/security" aria-label="Enterprise security and compliance">Enterprise from day one<span class="ext" aria-hidden="true">↗</span></a><span class="tag">Security</span></p>
+          <p class="def">SOC 2, GDPR, ISO 42001, and CCPA, with fully air-gapped deployment, SAML and IdP integration, centralized org configuration, and cost controls.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <section>
     <div class="wrap">
-      <p class="section-label">Agenda</p>
       <h2>What we will cover</h2>
       <div class="prose">
-        <p>Three parts, each demonstrated live in a real repository rather than on slides.</p>
+        <p>Seven capabilities, each shown live in a real repository rather than on slides. Every one links to its documentation if you want to read ahead.</p>
       </div>
 
-      <div class="group">
-        <div class="group-head">
-          <span class="group-num">01</span>
-          <h3 class="group-title">Orchestration</h3>
+      <div class="specs">
+        <div class="row">
+          <p class="term"><a href="https://docs.factory.ai/missions/overview" aria-label="Missions documentation">Missions<span class="ext" aria-hidden="true">↗</span></a><span class="tag">Orchestration</span></p>
+          <p class="def">Describe a large project in plain language, collaborate on the plan, then let Droid break it into milestones and run parallel workers until it ships.</p>
         </div>
-        <p class="group-note">How a large, multi-feature project gets planned, scoped, and executed by a coordinated team of agents.</p>
-        <div class="items">
-          <div class="item">
-            <h3>Missions</h3>
-            <p>Describe a large project in plain language, collaborate on the plan, then let Droid break it into milestones and run parallel workers until it ships.</p>
-          </div>
+        <div class="row">
+          <p class="term"><a href="https://docs.factory.ai/agent-readiness/overview" aria-label="Agent readiness documentation">Agent readiness<span class="ext" aria-hidden="true">↗</span></a><span class="tag">Measurement</span></p>
+          <p class="def">A scored assessment of how well your codebase supports autonomous development across eight pillars and five maturity levels, with a report on what to fix first.</p>
         </div>
-      </div>
-
-      <div class="group">
-        <div class="group-head">
-          <span class="group-num">02</span>
-          <h3 class="group-title">Measurement</h3>
+        <div class="row">
+          <p class="term"><a href="https://docs.factory.ai/agent-effectiveness/overview" aria-label="Agent effectiveness documentation">Agent effectiveness<span class="ext" aria-hidden="true">↗</span></a><span class="tag">Measurement</span></p>
+          <p class="def">Connects agent spend to the work it actually produced, so you can see how much faster your organization ships and where the return is coming from.</p>
         </div>
-        <p class="group-note">The two surfaces that tell you whether your codebase is ready for agents, and what you get back once it is.</p>
-        <div class="items items--2">
-          <div class="item">
-            <h3>Agent readiness</h3>
-            <p>A scored assessment of how well your codebase supports autonomous development across eight pillars and five maturity levels, with a report on what to fix first.</p>
-          </div>
-          <div class="item">
-            <h3>Agent effectiveness</h3>
-            <p>Connects agent spend to the work it actually produced, so you can see how much faster your organization ships and where the return is coming from.</p>
-          </div>
+        <div class="row">
+          <p class="term"><a href="https://docs.factory.ai/software-factory/code-review-ci" aria-label="Automated code review documentation">Code review<span class="ext" aria-hidden="true">↗</span></a><span class="tag">SDLC automation</span></p>
+          <p class="def">Every pull request gets reviewed automatically in CI, with comments on real correctness and design problems instead of style nits.</p>
         </div>
-      </div>
-
-      <div class="group">
-        <div class="group-head">
-          <span class="group-num">03</span>
-          <h3 class="group-title">SDLC automations</h3>
+        <div class="row">
+          <p class="term"><a href="https://docs.factory.ai/software-factory/security-review" aria-label="Security review documentation">Security review<span class="ext" aria-hidden="true">↗</span></a><span class="tag">SDLC automation</span></p>
+          <p class="def">Security-focused reviews of pull requests and full-codebase audits, using STRIDE, OWASP, and supply-chain methodology.</p>
         </div>
-        <p class="group-note">Standing automations that run on your repositories without anyone opening a session.</p>
-        <div class="items items--2">
-          <div class="item">
-            <h3>Code review</h3>
-            <p>Every pull request gets reviewed automatically in CI, with comments on real correctness and design problems instead of style nits.</p>
-          </div>
-          <div class="item">
-            <h3>Security review</h3>
-            <p>Security-focused reviews of pull requests and full-codebase audits, using STRIDE, OWASP, and supply-chain methodology.</p>
-          </div>
-          <div class="item">
-            <h3>Incident response</h3>
-            <p>Production alerts land in Slack, and Droid investigates root cause, then either resolves the incident or hands your on-call a written diagnosis.</p>
-          </div>
-          <div class="item">
-            <h3>AutoWiki</h3>
-            <p>Generates a structured, searchable wiki for any repository and refreshes it automatically on every push to the default branch.</p>
-          </div>
+        <div class="row">
+          <p class="term"><a href="https://docs.factory.ai/software-factory/incident-response" aria-label="Incident response documentation">Incident response<span class="ext" aria-hidden="true">↗</span></a><span class="tag">SDLC automation</span></p>
+          <p class="def">Production alerts land in Slack, and Droid investigates root cause, then either resolves the incident or hands your on-call a written diagnosis.</p>
+        </div>
+        <div class="row">
+          <p class="term"><a href="https://docs.factory.ai/software-factory/wiki/overview" aria-label="AutoWiki documentation">AutoWiki<span class="ext" aria-hidden="true">↗</span></a><span class="tag">SDLC automation</span></p>
+          <p class="def">Generates a structured, searchable wiki for any repository and refreshes it automatically on every push to the default branch.</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <p class="section-label">Audience</p>
-      <h2>Who should attend</h2>
-      <ul class="dots">
-        <li>Engineering leaders evaluating where agents fit in their delivery lifecycle</li>
-        <li>Platform and developer experience teams responsible for CI/CD and tooling</li>
-        <li>Security and compliance owners who need review and audit coverage at scale</li>
-        <li>Engineers who want to see what a Droid actually does on a real codebase</li>
-      </ul>
     </div>
   </section>
 
   <section class="close">
     <div class="wrap">
-      <p class="section-label" style="justify-content:center">Register</p>
       <h2>Save your spot</h2>
       <div class="prose">
-        <p>Wednesday, September 23, 12:00 to 12:30pm CST. Tell us what you want to see and we will weight the demo toward it.</p>
+        <p>Tell us what you want to see and we will weight the demo toward it.</p>
       </div>
       <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdHq7hYISY5QE2KslFO6a-uVSJbBu8kELKCIXn08nBWJqFJzA/viewform">Register for the demo</a>
     </div>
@@ -467,8 +334,9 @@
 
 <footer>
   <div class="wrap footer-inner">
-    <img class="footer-logo" src="factory-lockup-white.svg" alt="Factory">
-    <p class="footer-meta">Questions? <a href="mailto:ryan.morse@factory.ai">ryan.morse@factory.ai</a></p>
+    <img class="footer-logo logo-dark" src="./factory-lockup-white.svg" alt="Factory">
+    <img class="footer-logo logo-light" src="./factory-lockup-black.svg" alt="Factory">
+    <p><a href="https://docs.factory.ai">docs.factory.ai</a> · Questions? <a href="mailto:ryan.morse@factory.ai">ryan.morse@factory.ai</a></p>
   </div>
 </footer>
 
