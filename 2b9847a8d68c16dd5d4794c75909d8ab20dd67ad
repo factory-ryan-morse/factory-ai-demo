@@ -1,0 +1,23 @@
+v2/dark/index.html
+  6ceacdc01d159958 139,236,254
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.2",
+  "base_commit_sha": "2b9847a8d68c16dd5d4794c75909d8ab20dd67ad",
+  "prompts": {
+    "6ceacdc01d159958": {
+      "agent_id": {
+        "tool": "droid",
+        "id": "364655db-e275-4f4d-ba20-bd3ad68025b9",
+        "model": "auto"
+      },
+      "human_author": "Ryan Morse",
+      "messages": [],
+      "total_additions": 4,
+      "total_deletions": 29,
+      "accepted_lines": 3,
+      "overriden_lines": 0
+    }
+  }
+}
