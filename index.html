@@ -87,15 +87,6 @@
     padding:16px 0;
   }
   .logo{display:block;width:112px;height:auto}
-  .header-cta{
-    font-family:var(--mono);
-    font-size:13px;
-    color:var(--link);
-    text-decoration:var(--link-decoration);
-    text-underline-offset:2px;
-    white-space:nowrap;
-  }
-  .header-cta:hover{text-decoration:underline}
 
   /* ---------- hero ---------- */
   .hero{padding:72px 0 56px}
@@ -145,6 +136,7 @@
 
   /* ---------- sections ---------- */
   section{padding:48px 0;border-top:1px solid var(--rule)}
+  main section:last-of-type{padding-bottom:64px}
   h2{
     font-weight:400;
     font-size:26px;
@@ -202,11 +194,6 @@
   }
   .def{margin:0;font-size:16px;line-height:1.55;text-wrap:pretty}
 
-  /* ---------- close ---------- */
-  .close{padding:56px 0 64px}
-  .close h2{margin-bottom:14px}
-  .close .prose{margin-bottom:26px}
-
   /* ---------- footer ---------- */
   footer{border-top:1px solid var(--rule);padding:22px 0 40px}
   .footer-inner{
@@ -228,7 +215,6 @@
     section{padding:40px 0}
     .row{grid-template-columns:1fr;gap:6px;padding:16px 0}
     .tag{display:inline-block;margin:0 0 0 8px}
-    .header-cta{display:none}
   }
 </style>
 </head>
@@ -238,7 +224,6 @@
   <div class="wrap header-inner">
     <img class="logo logo-dark" src="./factory-lockup-white.svg" alt="Factory">
     <img class="logo logo-light" src="./factory-lockup-black.svg" alt="Factory">
-    <a class="header-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSdHq7hYISY5QE2KslFO6a-uVSJbBu8kELKCIXn08nBWJqFJzA/viewform">Register →</a>
   </div>
 </header>
 
@@ -248,7 +233,7 @@
     <h1>Factory AI Demo</h1>
     <p class="meta">Wednesday, September 23 · 12:00–12:30pm CST · live, with Q&amp;A</p>
     <p class="lede">Factory is the platform enterprises use to build and operate their Software Factory: a 24/7 system that continuously turns signals into production software across the entire lifecycle.</p>
-    <p class="sub">It is model-agnostic, deploys anywhere from the cloud to fully air-gapped environments, and keeps engineers in control as the governance.</p>
+    <p class="sub">It's model-agnostic and deploys across any environment and any surface, with full enterprise controls and governance.</p>
     <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdHq7hYISY5QE2KslFO6a-uVSJbBu8kELKCIXn08nBWJqFJzA/viewform">Register for the demo</a>
   </div>
 
@@ -266,7 +251,7 @@
         </div>
         <div class="row">
           <p class="term"><a href="https://factory.ai/product/router" aria-label="Auto Model Router and model independence">Model independence<span class="ext" aria-hidden="true">↗</span></a><span class="tag">Auto model router</span></p>
-          <p class="def">Different models win on different axes, so the router sends each step to the one that wins on that axis. Swap providers with zero rewrites, bring your own keys and gateways, and add new models the day they ship.</p>
+          <p class="def">Different models win on different axes: coding, reasoning, speed, cost, context window, and tool use. The Auto Model Router is optional, and when it is on it sends each step to the model that wins on the axis that step needs. Pin a single model instead if you prefer, swap providers with zero rewrites, and bring your own keys and gateways.</p>
         </div>
         <div class="row">
           <p class="term"><a href="https://factory.ai/security" aria-label="Sovereign deployment options">Sovereign deployment<span class="ext" aria-hidden="true">↗</span></a><span class="tag">Cloud to air-gapped</span></p>
@@ -284,7 +269,7 @@
     <div class="wrap">
       <h2>What we will cover</h2>
       <div class="prose">
-        <p>Seven capabilities, each shown live in a real repository rather than on slides. Every one links to its documentation if you want to read ahead.</p>
+        <p>Seven capabilities, each shown live in a real repository rather than on slides.</p>
       </div>
 
       <div class="specs">
@@ -317,16 +302,6 @@
           <p class="def">Generates a structured, searchable wiki for any repository and refreshes it automatically on every push to the default branch.</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="close">
-    <div class="wrap">
-      <h2>Save your spot</h2>
-      <div class="prose">
-        <p>Tell us what you want to see and we will weight the demo toward it.</p>
-      </div>
-      <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdHq7hYISY5QE2KslFO6a-uVSJbBu8kELKCIXn08nBWJqFJzA/viewform">Register for the demo</a>
     </div>
   </section>
 
