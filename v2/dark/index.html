@@ -117,7 +117,13 @@
   .lede{
     font-size:20px;
     line-height:1.5;
-    max-width:46ch;
+    max-width:52ch;
+    margin:0 0 16px;
+    text-wrap:pretty;
+  }
+  .sub{
+    font-size:17px;
+    max-width:58ch;
     margin:0 0 32px;
     text-wrap:pretty;
   }
@@ -136,12 +142,6 @@
     transition:filter .15s ease;
   }
   .btn:hover{filter:brightness(1.08)}
-  .btn-note{
-    font-family:var(--mono);
-    font-size:13px;
-    color:var(--meta);
-    margin:14px 0 0;
-  }
 
   /* ---------- sections ---------- */
   section{padding:48px 0;border-top:1px solid var(--rule)}
@@ -247,34 +247,34 @@
   <div class="wrap hero">
     <h1>Factory AI Demo</h1>
     <p class="meta">Wednesday, September 23 · 12:00–12:30pm CST · live, with Q&amp;A</p>
-    <p class="lede">A working look at how engineering teams delegate real software work to agents, from a single task to a full delivery lifecycle.</p>
+    <p class="lede">Factory is the platform enterprises use to build and operate their Software Factory: a 24/7 system that continuously turns signals into production software across the entire lifecycle.</p>
+    <p class="sub">It is model-agnostic, deploys anywhere from the cloud to fully air-gapped environments, and keeps engineers in control as the governance.</p>
     <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdHq7hYISY5QE2KslFO6a-uVSJbBu8kELKCIXn08nBWJqFJzA/viewform">Register for the demo</a>
-    <p class="btn-note">Under a minute. We will send the calendar invite and joining link.</p>
   </div>
 
   <section>
     <div class="wrap">
       <h2>The autonomy stack for enterprise teams</h2>
       <div class="prose">
-        <p>Factory builds <strong>Droids</strong>, software engineering agents that take on complete tasks rather than autocompleting lines. Engineers set the intent and review the result. Droids do the work in between.</p>
+        <p>Factory is an agent-native orchestration platform: an autonomous, self-improving system of <strong>Droids</strong> that runs across the entire software development lifecycle. Not autocomplete, and not one agent that codes, but an integrated system where every stage shares context and compounds on the stage before it.</p>
       </div>
 
       <div class="specs">
         <div class="row">
+          <p class="term"><a href="https://docs.factory.ai/software-factory/overview" aria-label="Autonomous SDLC documentation">Autonomous SDLC<span class="ext" aria-hidden="true">↗</span></a><span class="tag">Signal to ship</span></p>
+          <p class="def">Signal, triage, plan, code, test, review, secure, ship. Droids work every stage on shared context, so each one strengthens the others rather than stopping at the coding step.</p>
+        </div>
+        <div class="row">
+          <p class="term"><a href="https://factory.ai/product/router" aria-label="Auto Model Router and model independence">Model independence<span class="ext" aria-hidden="true">↗</span></a><span class="tag">Auto model router</span></p>
+          <p class="def">Different models win on different axes, so the router sends each step to the one that wins on that axis. Swap providers with zero rewrites, bring your own keys and gateways, and add new models the day they ship.</p>
+        </div>
+        <div class="row">
+          <p class="term"><a href="https://factory.ai/security" aria-label="Sovereign deployment options">Sovereign deployment<span class="ext" aria-hidden="true">↗</span></a><span class="tag">Cloud to air-gapped</span></p>
+          <p class="def">Run it as managed SaaS, as a hybrid control plane on your own compute, on-premises inside your perimeter, or fully air-gapped with no external network access. Same platform and controls in every mode, with SOC 2 Type II, ISO 27001 and 42001, GDPR, and CCPA behind it.</p>
+        </div>
+        <div class="row">
           <p class="term"><a href="https://factory.ai" aria-label="One platform, every surface">One platform<span class="ext" aria-hidden="true">↗</span></a><span class="tag">Every surface</span></p>
-          <p class="def">Droids ship from the desktop app, the CLI, Slack and Teams, mobile, Linear and Jira, and GitHub, so the work happens on the surfaces your team already uses.</p>
-        </div>
-        <div class="row">
-          <p class="term"><a href="https://factory.ai/enterprise" aria-label="Your software factory, on the Factory enterprise page">Your software factory<span class="ext" aria-hidden="true">↗</span></a><span class="tag">Underneath</span></p>
-          <p class="def">The compute Droids run on, the routing that picks their models, the automations that dispatch them, and the analytics that show what actually landed.</p>
-        </div>
-        <div class="row">
-          <p class="term"><a href="https://factory.ai/product/router" aria-label="Model routing, no lock-in">No lock-in<span class="ext" aria-hidden="true">↗</span></a><span class="tag">Models and tools</span></p>
-          <p class="def">Move freely between open and closed models, run several in parallel, or bring your own endpoint or weights. Droids plug into the code host, tracker, chat, cloud, and CI you already run.</p>
-        </div>
-        <div class="row">
-          <p class="term"><a href="https://factory.ai/security" aria-label="Enterprise security and compliance">Enterprise from day one<span class="ext" aria-hidden="true">↗</span></a><span class="tag">Security</span></p>
-          <p class="def">SOC 2, GDPR, ISO 42001, and CCPA, with fully air-gapped deployment, SAML and IdP integration, centralized org configuration, and cost controls.</p>
+          <p class="def">The same Droid works from the desktop app, the CLI, Slack and Teams, mobile, Linear and Jira, GitHub, and CI, so the work happens on the surfaces your team already uses.</p>
         </div>
       </div>
     </div>
