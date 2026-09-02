@@ -1,0 +1,25 @@
+build.py
+  6ceacdc01d159958 1-62
+v2/dark/index.html
+  6ceacdc01d159958 161,179-192,257,259-278,287,292,296,300,304,308,312,316,339
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.2",
+  "base_commit_sha": "e36b4eb942bf4bd3559cef9dc771b76446d9e137",
+  "prompts": {
+    "6ceacdc01d159958": {
+      "agent_id": {
+        "tool": "droid",
+        "id": "364655db-e275-4f4d-ba20-bd3ad68025b9",
+        "model": "auto"
+      },
+      "human_author": "Ryan Morse",
+      "messages": [],
+      "total_additions": 107,
+      "total_deletions": 12,
+      "accepted_lines": 107,
+      "overriden_lines": 0
+    }
+  }
+}
